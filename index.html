@@ -1,512 +1,257 @@
 <!DOCTYPE html>
-<html lang="es">
+<html lang="en">
 <head>
-  <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>Pedro Balderrama — Developer</title>
-  <link rel="preconnect" href="https://fonts.googleapis.com" />
-  <link href="https://fonts.googleapis.com/css2?family=DM+Serif+Display:ital@0;1&family=DM+Mono:wght@400;500&family=DM+Sans:wght@300;400;500&display=swap" rel="stylesheet" />
-  <style>
-    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Pedro Carlos Balderrama Campos — Resume</title>
+<link href="https://fonts.googleapis.com/css2?family=EB+Garamond:ital,wght@0,400;0,500;0,600;1,400&family=Libre+Baskerville:ital,wght@0,400;0,700;1,400&display=swap" rel="stylesheet">
+<style>
+  *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
 
-    :root {
-      --bg: #f9f8f5;
-      --surface: #ffffff;
-      --text: #1a1a18;
-      --muted: #6b6b64;
-      --border: #e2e0d8;
-      --accent: #2a5c45;
-      --accent-light: #e8f0eb;
-      --tag-bg: #f0ede6;
-      --tag-text: #3a3a34;
-    }
+  body {
+    font-family: 'EB Garamond', Georgia, serif;
+    font-size: 11.5pt;
+    line-height: 1.45;
+    color: #1a1a1a;
+    background: #f4f1ec;
+    display: flex;
+    justify-content: center;
+    align-items: flex-start;
+    min-height: 100vh;
+    padding: 2rem 1rem;
+  }
 
-    html { scroll-behavior: smooth; }
+  .page {
+    background: #ffffff;
+    width: 8.5in;
+    min-height: 11in;
+    padding: 0.7in 0.9in 0.7in 0.9in;
+    box-shadow: 0 4px 24px rgba(0,0,0,0.13);
+  }
 
-    body {
-      font-family: 'DM Sans', sans-serif;
-      background: var(--bg);
-      color: var(--text);
-      line-height: 1.6;
-    }
+  .header { text-align: center; margin-bottom: 10px; }
 
-    /* NAV */
-    nav {
-      position: sticky;
-      top: 0;
-      z-index: 100;
-      background: rgba(249, 248, 245, 0.92);
-      backdrop-filter: blur(12px);
-      border-bottom: 1px solid var(--border);
-      padding: 0 2rem;
-    }
-    .nav-inner {
-      max-width: 860px;
-      margin: 0 auto;
-      display: flex;
-      align-items: center;
-      justify-content: space-between;
-      height: 56px;
-    }
-    .nav-logo {
-      font-family: 'DM Mono', monospace;
-      font-size: 14px;
-      color: var(--accent);
-      letter-spacing: 0.02em;
-      text-decoration: none;
-    }
-    .nav-links {
-      display: flex;
-      gap: 2rem;
-      list-style: none;
-    }
-    .nav-links a {
-      font-size: 13px;
-      color: var(--muted);
-      text-decoration: none;
-      letter-spacing: 0.03em;
-      transition: color 0.2s;
-    }
-    .nav-links a:hover { color: var(--text); }
+  .name {
+    font-family: 'Libre Baskerville', Georgia, serif;
+    font-size: 22pt;
+    font-weight: 700;
+    letter-spacing: 0.04em;
+    color: #111;
+    margin-bottom: 5px;
+  }
 
-    /* SECTIONS */
-    section {
-      max-width: 860px;
-      margin: 0 auto;
-      padding: 5rem 2rem;
-    }
+  .contact { font-size: 10pt; color: #444; letter-spacing: 0.01em; }
+  .contact span { margin: 0 6px; }
+  .contact span:not(:last-child)::after { content: ' ·'; color: #999; }
 
-    /* HERO */
-    #hero {
-      padding-top: 7rem;
-      padding-bottom: 5rem;
-    }
-    .hero-label {
-      font-family: 'DM Mono', monospace;
-      font-size: 12px;
-      color: var(--accent);
-      letter-spacing: 0.08em;
-      text-transform: uppercase;
-      margin-bottom: 1.5rem;
-    }
-    .hero-name {
-      font-family: 'DM Serif Display', serif;
-      font-size: clamp(3rem, 7vw, 5.5rem);
-      line-height: 1.05;
-      color: var(--text);
-      margin-bottom: 1.5rem;
-    }
-    .hero-name em {
-      font-style: italic;
-      color: var(--accent);
-    }
-    .hero-desc {
-      font-size: 1.1rem;
-      color: var(--muted);
-      max-width: 520px;
-      margin-bottom: 2.5rem;
-      font-weight: 300;
-      line-height: 1.8;
-    }
-    .hero-cta {
-      display: inline-flex;
-      align-items: center;
-      gap: 8px;
-      background: var(--accent);
-      color: #fff;
-      padding: 12px 24px;
-      border-radius: 4px;
-      text-decoration: none;
-      font-size: 14px;
-      font-weight: 500;
-      letter-spacing: 0.02em;
-      transition: opacity 0.2s;
-    }
-    .hero-cta:hover { opacity: 0.85; }
-    .hero-cta-ghost {
-      display: inline-flex;
-      align-items: center;
-      gap: 8px;
-      background: transparent;
-      color: var(--text);
-      padding: 12px 24px;
-      border: 1px solid var(--border);
-      border-radius: 4px;
-      text-decoration: none;
-      font-size: 14px;
-      font-weight: 500;
-      margin-left: 12px;
-      transition: border-color 0.2s;
-    }
-    .hero-cta-ghost:hover { border-color: var(--muted); }
+  .divider-thick { border: none; border-top: 1.8px solid #111; margin: 8px 0 2px; }
+  .divider-thin  { border: none; border-top: 0.6px solid #111; margin: 2px 0 10px; }
 
-    /* DIVIDER */
-    .divider {
-      max-width: 860px;
-      margin: 0 auto;
-      padding: 0 2rem;
-      border: none;
-      border-top: 1px solid var(--border);
-    }
+  .section { margin-bottom: 16px; }
 
-    /* SECTION HEADER */
-    .section-label {
-      font-family: 'DM Mono', monospace;
-      font-size: 11px;
-      color: var(--accent);
-      letter-spacing: 0.1em;
-      text-transform: uppercase;
-      margin-bottom: 2.5rem;
-      display: flex;
-      align-items: center;
-      gap: 12px;
-    }
-    .section-label::after {
-      content: '';
-      flex: 1;
-      height: 1px;
-      background: var(--border);
-      max-width: 60px;
-    }
+  .section-title {
+    font-family: 'Libre Baskerville', Georgia, serif;
+    font-size: 10.5pt;
+    font-weight: 700;
+    letter-spacing: 0.12em;
+    text-transform: uppercase;
+    color: #111;
+    margin-bottom: 7px;
+    padding-bottom: 3px;
+    border-bottom: 0.8px solid #ccc;
+  }
 
-    /* ABOUT */
-    .about-grid {
-      display: grid;
-      grid-template-columns: 1fr 1fr;
-      gap: 4rem;
-      align-items: start;
-    }
-    .about-text {
-      font-size: 1.05rem;
-      color: var(--muted);
-      line-height: 1.9;
-      font-weight: 300;
-    }
-    .about-text p + p { margin-top: 1rem; }
-    .skills-list {
-      display: flex;
-      flex-wrap: wrap;
-      gap: 8px;
-    }
-    .skill-tag {
-      font-family: 'DM Mono', monospace;
-      font-size: 12px;
-      padding: 6px 14px;
-      background: var(--tag-bg);
-      color: var(--tag-text);
-      border-radius: 2px;
-      letter-spacing: 0.02em;
-    }
-    .skills-title {
-      font-size: 13px;
-      font-weight: 500;
-      color: var(--muted);
-      margin-bottom: 12px;
-      letter-spacing: 0.04em;
-    }
+  .edu-entry { margin-bottom: 8px; }
 
-    /* PROJECTS */
-    .projects-grid {
-      display: grid;
-      grid-template-columns: 1fr 1fr;
-      gap: 1.5rem;
-    }
-    .project-card {
-      background: var(--surface);
-      border: 1px solid var(--border);
-      border-radius: 6px;
-      padding: 1.75rem;
-      transition: border-color 0.2s, transform 0.2s;
-      position: relative;
-      overflow: hidden;
-    }
-    .project-card::before {
-      content: '';
-      position: absolute;
-      top: 0; left: 0; right: 0;
-      height: 3px;
-      background: var(--accent);
-      transform: scaleX(0);
-      transform-origin: left;
-      transition: transform 0.3s ease;
-    }
-    .project-card:hover { border-color: #c5c3bc; transform: translateY(-2px); }
-    .project-card:hover::before { transform: scaleX(1); }
-    .project-num {
-      font-family: 'DM Mono', monospace;
-      font-size: 11px;
-      color: var(--accent);
-      margin-bottom: 1rem;
-    }
-    .project-title {
-      font-family: 'DM Serif Display', serif;
-      font-size: 1.3rem;
-      color: var(--text);
-      margin-bottom: 0.75rem;
-      line-height: 1.3;
-    }
-    .project-desc {
-      font-size: 14px;
-      color: var(--muted);
-      line-height: 1.7;
-      margin-bottom: 1.25rem;
-      font-weight: 300;
-    }
-    .project-tags {
-      display: flex;
-      flex-wrap: wrap;
-      gap: 6px;
-      margin-bottom: 1.25rem;
-    }
-    .project-tag {
-      font-family: 'DM Mono', monospace;
-      font-size: 11px;
-      padding: 4px 10px;
-      background: var(--accent-light);
-      color: var(--accent);
-      border-radius: 2px;
-    }
-    .project-link {
-      font-size: 13px;
-      color: var(--accent);
-      text-decoration: none;
-      font-weight: 500;
-      display: inline-flex;
-      align-items: center;
-      gap: 4px;
-    }
-    .project-link:hover { text-decoration: underline; }
+  .row-space {
+    display: flex;
+    justify-content: space-between;
+    align-items: baseline;
+  }
 
-    /* CONTACT */
-    .contact-wrap {
-      display: grid;
-      grid-template-columns: 1fr 1fr;
-      gap: 4rem;
-      align-items: center;
-    }
-    .contact-heading {
-      font-family: 'DM Serif Display', serif;
-      font-size: 2.5rem;
-      line-height: 1.2;
-      margin-bottom: 1rem;
-    }
-    .contact-heading em { font-style: italic; color: var(--accent); }
-    .contact-sub {
-      font-size: 1rem;
-      color: var(--muted);
-      font-weight: 300;
-      line-height: 1.8;
-    }
-    .contact-links { display: flex; flex-direction: column; gap: 12px; }
-    .contact-link {
-      display: flex;
-      align-items: center;
-      gap: 14px;
-      padding: 16px 20px;
-      background: var(--surface);
-      border: 1px solid var(--border);
-      border-radius: 6px;
-      text-decoration: none;
-      color: var(--text);
-      font-size: 14px;
-      transition: border-color 0.2s, background 0.2s;
-    }
-    .contact-link:hover { border-color: var(--accent); background: var(--accent-light); }
-    .contact-link-icon {
-      width: 36px;
-      height: 36px;
-      background: var(--tag-bg);
-      border-radius: 4px;
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      font-size: 16px;
-    }
-    .contact-link-label { font-weight: 500; }
-    .contact-link-sub { font-size: 12px; color: var(--muted); }
+  .institution {
+    font-weight: 600;
+    font-size: 11pt;
+    color: #111;
+  }
 
-    /* FOOTER */
-    footer {
-      border-top: 1px solid var(--border);
-      padding: 2rem;
-      text-align: center;
-    }
-    .footer-inner {
-      max-width: 860px;
-      margin: 0 auto;
-      display: flex;
-      justify-content: space-between;
-      align-items: center;
-    }
-    footer p {
-      font-family: 'DM Mono', monospace;
-      font-size: 12px;
-      color: var(--muted);
-    }
+  .right-label {
+    font-size: 10pt;
+    color: #555;
+    text-align: right;
+    flex-shrink: 0;
+    margin-left: 12px;
+  }
 
-    @media (max-width: 640px) {
-      .about-grid, .projects-grid, .contact-wrap { grid-template-columns: 1fr; gap: 2rem; }
-      .nav-links { display: none; }
-      .hero-name { font-size: 2.8rem; }
-    }
-  </style>
+  .degree {
+    font-style: italic;
+    font-size: 10.5pt;
+    color: #222;
+    margin-top: 1px;
+  }
+
+  .edu-detail {
+    font-size: 10pt;
+    color: #555;
+    margin-top: 1px;
+  }
+
+  .exp-entry { margin-bottom: 13px; }
+
+  .exp-company { font-weight: 600; font-size: 11pt; color: #111; }
+
+  .exp-title { font-style: italic; font-size: 10.5pt; color: #222; }
+
+  .exp-bullets {
+    margin-top: 5px;
+    padding-left: 0;
+    list-style: none;
+  }
+
+  .exp-bullets li {
+    font-size: 10.5pt;
+    color: #222;
+    line-height: 1.5;
+    margin-bottom: 3px;
+    position: relative;
+    padding-left: 14px;
+  }
+
+  .exp-bullets li::before { content: '•'; position: absolute; left: 0; color: #555; }
+
+  .skills-table { width: 100%; font-size: 10.5pt; border-collapse: collapse; }
+  .skills-table td { padding: 2px 0; vertical-align: top; line-height: 1.5; }
+  .skills-table td:first-child { font-weight: 600; width: 160px; padding-right: 10px; color: #111; }
+  .skills-table td:last-child { color: #333; }
+
+  .cert-link { color: #555; font-size: 10pt; text-decoration: none; }
+  .cert-link:hover { text-decoration: underline; }
+
+  .tag {
+    display: inline-block;
+    font-size: 8.5pt;
+    background: #f0ede8;
+    color: #555;
+    border: 0.5px solid #ccc;
+    border-radius: 3px;
+    padding: 0px 5px;
+    margin-left: 5px;
+    font-style: normal;
+    letter-spacing: 0.02em;
+    vertical-align: middle;
+  }
+
+  @media print {
+    body { background: white; padding: 0; }
+    .page { box-shadow: none; padding: 0.6in 0.9in; }
+    @page { size: letter; margin: 0; }
+  }
+</style>
 </head>
 <body>
+<div class="page">
 
-  <nav>
-    <div class="nav-inner">
-      <a class="nav-logo" href="#">pb.dev</a>
-      <ul class="nav-links">
-        <li><a href="#about">about</a></li>
-        <li><a href="#projects">projects</a></li>
-        <li><a href="#contact">contact</a></li>
+  <!-- HEADER -->
+  <div class="header">
+    <div class="name">Pedro Carlos Balderrama Campos</div>
+    <div class="contact">
+      <span>Ensenada, Baja California, México</span>
+      <span>English &amp; Spanish</span>
+    </div>
+  </div>
+
+  <hr class="divider-thick">
+  <hr class="divider-thin">
+
+  <!-- EDUCATION -->
+  <div class="section">
+    <div class="section-title">Education</div>
+    <div class="edu-entry">
+      <div class="row-space">
+        <span class="institution">Universidad Autónoma de Baja California (UABC)</span>
+        <span class="right-label">Ensenada, Baja California, México</span>
+      </div>
+      <div class="degree">B.Eng. in Software Engineering and Emerging Technologies</div>
+      <div class="edu-detail">Aug. 2022 – June 2027 (Expected) &nbsp;·&nbsp; Currently enrolled &nbsp;·&nbsp; Highest education level</div>
+    </div>
+  </div>
+
+  <!-- EXPERIENCE -->
+  <div class="section">
+    <div class="section-title">Experience</div>
+    <div class="exp-entry">
+      <div class="row-space">
+        <span class="exp-company">InkToner</span>
+        <span class="right-label">Ensenada, Baja California, México</span>
+      </div>
+      <div class="row-space" style="margin-top:1px;">
+        <span class="exp-title">Senior Electronics Repair &amp; Microsoldering Technician</span>
+        <span class="right-label">June 2022 – October 2025</span>
+      </div>
+      <ul class="exp-bullets">
+        <li>Performed component-level diagnostics and board repairs on consumer electronics using microsoldering, SMD/BGA rework, and electronic test equipment (oscilloscope, multimeter, power supply); improved repair success rates through root-cause analysis and quality control documentation.</li>
       </ul>
     </div>
-  </nav>
+  </div>
 
-  <!-- HERO -->
-  <section id="hero">
-    <p class="hero-label">Available for work</p>
-    <h1 class="hero-name">Pedro<br/><em>Balderrama</em></h1>
-    <p class="hero-desc">
-      Developer with a focus on clean code and practical solutions.
-      I build with Python and the web — from scripts to full interfaces.
-    </p>
-    <a href="#projects" class="hero-cta">Ver proyectos →</a>
-    <a href="#contact" class="hero-cta-ghost">Contacto</a>
-  </section>
+  <!-- SKILLS -->
+  <div class="section">
+    <div class="section-title">Skills &amp; Technical Competencies</div>
+    <table class="skills-table">
+      <tr>
+        <td>Hardware Repair</td>
+        <td>Microsoldering, SMD Rework, BGA Rework, PCB Diagnostics, Circuit Analysis</td>
+      </tr>
+      <tr>
+        <td>Test Equipment</td>
+        <td>Oscilloscope, Multimeter, DC Power Supply, Electronic Testing Equipment</td>
+      </tr>
+      <tr>
+        <td>Engineering</td>
+        <td>Hardware Debugging, Root Cause Analysis, Power Electronics, Quality Control</td>
+      </tr>
+      <tr>
+        <td>Programming</td>
+        <td>Java (certified), fundamentals of Software Engineering &amp; systems development</td>
+      </tr>
+      <tr>
+        <td>Documentation</td>
+        <td>Technical Documentation, repair reporting, quality control records</td>
+      </tr>
+      <tr>
+        <td>Languages</td>
+        <td>Spanish (native), English (professional working proficiency)</td>
+      </tr>
+    </table>
+  </div>
 
-  <hr class="divider" />
+  <!-- CERTIFICATIONS -->
+  <div class="section">
+    <div class="section-title">Certifications</div>
 
-  <!-- ABOUT -->
-  <section id="about">
-    <p class="section-label">About</p>
-    <div class="about-grid">
-      <div class="about-text">
-        <p>
-          Soy desarrollador con experiencia en Python y desarrollo web.
-          Me interesa construir herramientas que resuelvan problemas reales
-          con código limpio y bien estructurado.
-        </p>
-        <p>
-          Actualmente buscando oportunidades donde pueda seguir creciendo
-          y aportar valor a un equipo comprometido con la calidad.
-        </p>
+    <div class="edu-entry">
+      <div class="row-space">
+        <span class="institution">Java (Basic) Skill Certificate
+          <span class="tag">Verified</span>
+        </span>
+        <span class="right-label">HackerRank</span>
       </div>
-      <div>
-        <p class="skills-title">Stack</p>
-        <div class="skills-list">
-          <span class="skill-tag">Python</span>
-          <span class="skill-tag">HTML</span>
-          <span class="skill-tag">CSS</span>
-          <span class="skill-tag">Git</span>
-          <span class="skill-tag">GitHub</span>
-          <span class="skill-tag">Linux</span>
-        </div>
-      </div>
-    </div>
-  </section>
-
-  <hr class="divider" />
-
-  <!-- PROJECTS -->
-  <section id="projects">
-    <p class="section-label">Projects</p>
-    <div class="projects-grid">
-
-      <div class="project-card">
-        <p class="project-num">01</p>
-        <h3 class="project-title">Nombre del proyecto</h3>
-        <p class="project-desc">
-          Descripción breve del proyecto. Qué problema resuelve y cómo lo hace.
-        </p>
-        <div class="project-tags">
-          <span class="project-tag">Python</span>
-          <span class="project-tag">HTML</span>
-        </div>
-        <a href="#" class="project-link">Ver proyecto →</a>
-      </div>
-
-      <div class="project-card">
-        <p class="project-num">02</p>
-        <h3 class="project-title">Nombre del proyecto</h3>
-        <p class="project-desc">
-          Descripción breve del proyecto. Qué problema resuelve y cómo lo hace.
-        </p>
-        <div class="project-tags">
-          <span class="project-tag">Python</span>
-          <span class="project-tag">CSS</span>
-        </div>
-        <a href="#" class="project-link">Ver proyecto →</a>
-      </div>
-
-      <div class="project-card">
-        <p class="project-num">03</p>
-        <h3 class="project-title">Nombre del proyecto</h3>
-        <p class="project-desc">
-          Descripción breve del proyecto. Qué problema resuelve y cómo lo hace.
-        </p>
-        <div class="project-tags">
-          <span class="project-tag">HTML</span>
-          <span class="project-tag">CSS</span>
-        </div>
-        <a href="#" class="project-link">Ver proyecto →</a>
-      </div>
-
-      <div class="project-card">
-        <p class="project-num">04</p>
-        <h3 class="project-title">Nombre del proyecto</h3>
-        <p class="project-desc">
-          Descripción breve del proyecto. Qué problema resuelve y cómo lo hace.
-        </p>
-        <div class="project-tags">
-          <span class="project-tag">Python</span>
-          <span class="project-tag">Git</span>
-        </div>
-        <a href="#" class="project-link">Ver proyecto →</a>
-      </div>
-
-    </div>
-  </section>
-
-  <hr class="divider" />
-
-  <!-- CONTACT -->
-  <section id="contact">
-    <p class="section-label">Contact</p>
-    <div class="contact-wrap">
-      <div>
-        <h2 class="contact-heading">Let's<br/><em>work together</em></h2>
-        <p class="contact-sub">
-          ¿Tienes un proyecto en mente o quieres saber más sobre mi trabajo?
-          Escríbeme, respondo rápido.
-        </p>
-      </div>
-      <div class="contact-links">
-        <a href="mailto:pedrocbcmp@gmail.com" class="contact-link">
-          <div class="contact-link-icon">✉</div>
-          <div>
-            <p class="contact-link-label">Email</p>
-            <p class="contact-link-sub">pedrocbcmp@gmail.com</p>
-          </div>
-        </a>
-        <a href="https://github.com/PedroxionX" target="_blank" class="contact-link">
-          <div class="contact-link-icon">⌥</div>
-          <div>
-            <p class="contact-link-label">GitHub</p>
-            <p class="contact-link-sub">github.com/PedroxionX</p>
-          </div>
-        </a>
+      <div class="edu-detail">Core Java concepts: classes, data structures, inheritance, and exception handling (Java 7 / Java 8)</div>
+      <div class="edu-detail" style="margin-top:2px;">
+        <a href="https://www.hackerrank.com/certificates/c1373c78ded6" class="cert-link">hackerrank.com/certificates/c1373c78ded6</a>
       </div>
     </div>
-  </section>
 
-  <footer>
-    <div class="footer-inner">
-      <p>© 2026 Pedro Balderrama</p>
-      <p>Built with HTML & CSS</p>
+    <div class="edu-entry" style="margin-top:9px;">
+      <div class="row-space">
+        <span class="institution">Advanced Microsoldering and PCB Repair</span>
+        <span class="right-label">Private Training Organization</span>
+      </div>
+      <div class="edu-detail">Comprehensive training in microsoldering, PCB diagnostics, component-level repair, and SMD/BGA replacement techniques</div>
     </div>
-  </footer>
 
+  </div>
+
+</div>
 </body>
 </html>
